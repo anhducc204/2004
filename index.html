@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUI Á</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .greeting-section {
+            display: block;
+        }
+
+        .greeting-section.hidden {
+            display: none;
+        }
+
+        .info-section {
+            display: none;
+        }
+
+        .info-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .greeting-message {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .info-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 100px;
+            margin-right: 15px;
+        }
+
+        .info-value {
+            color: #333;
+            flex-grow: 1;
+            word-break: break-all;
+        }
+
+        .info-value a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .info-value a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            margin-top: 30px;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .info-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Phần Chào Hỏi -->
+        <div class="greeting-section">
+            <h1><span class="emoji">👋</span>Xin Chào!</h1>
+            <p class="greeting-message">
+                Rất vui được gặp bạn! <br>
+                Hãy nhấn nút bên dưới để biết thêm về tôi.
+            </p>
+            <button class="btn" onclick="showInfo()">Xin Chào</button>
+        </div>
+
+        <!-- Phần Thông Tin Cá Nhân -->
+        <div class="info-section">
+            <div class="info-header">
+                <img src="tui.jpg" alt="Avatar" class="avatar">
+                <h1> ANH DUC</h1>
+            </div>
+            
+            <div class="info-box">
+                
+                <div class="info-item">
+                    <span class="info-label">💬 Facebook:</span>
+                    <span class="info-value"><a href="https://www.facebook.com/anhladuc204" target="_blank">facebook.com/anhladuc204</a></span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">📍 Địa chỉ:</span>
+                    <span class="info-value">Hà Nội, Việt Nam</span>
+                </div>
+            </div>
+
+            <button class="btn back-btn" onclick="showGreeting()">← Quay Lại</button>
+        </div>
+    </div>
+
+    <script>
+        function showInfo() {
+            document.querySelector('.greeting-section').classList.add('hidden');
+            document.querySelector('.info-section').classList.add('show');
+        }
+
+        function showGreeting() {
+            document.querySelector('.greeting-section').classList.remove('hidden');
+            document.querySelector('.info-section').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
